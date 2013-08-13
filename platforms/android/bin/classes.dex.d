@@ -7,5 +7,4 @@
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/bin/classes/com/card/signup/R$string.class \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/bin/classes/com/card/signup/R$xml.class \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/bin/classes/com/card/signup/R.class \
-/Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/bin/classes/org/apache/cordova/core/SplashScreen.class \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/bin/dexedLibs/cordova-3.0.0-fb010cf97cca557c605aed8471af6cbb.jar \

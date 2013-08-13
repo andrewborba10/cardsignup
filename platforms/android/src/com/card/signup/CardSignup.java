@@ -28,12 +28,9 @@ public class CardSignup extends DroidGap
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        
         // Set by <content src="index.html" /> in config.xml
         super.loadUrl(Config.getStartUrl());
-        
-        // TODO: Obtain images for the splash screen, name it splash.png, 9-patch image.
-        //super.setIntegerProperty("splashscreen", R.drawable.splash);
-        //super.loadUrl(Config.getStartUrl(), 10000);
+        //super.loadUrl("file:///android_asset/www/index.html")
     }
 }
+
