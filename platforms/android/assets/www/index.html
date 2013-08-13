@@ -19,24 +19,113 @@
 -->
 <html>
     <head>
+        <title>Introduction</title>
+
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
     </head>
+
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div data-role="page" id="index">
+            <div data-role="header">
+                <h1>CARD.com</h1>
+            </div>
+
+            <div data-role="content">
+                <p>A nice introduction to CARD.com.  Maybe an embedded video?</p>
+
+                <a href="#login" data-role="button" data-transition="slide">Let's get started!</a>
             </div>
         </div>
+
+        <div data-role="page" id="login">
+            <div data-role="header">
+                <h1>CARD.com</h1>
+            </div>
+
+            <div data-role="content">
+                <p>Please allow us to help you choose a card that best suits you by connecting to facebook.</p>
+
+                <a href="#gallery" data-role="button" data-transition="slide">Connect to Facebook</a>
+
+                <p>Or instead you can skip facebook and get straight to browsing through our extensive gallery of cards.</p>
+
+                <a href="#gallery" data-role="button" data-transition="slide">Take me to the cards!</a>
+            </div>
+        </div>
+
+        <div data-role="page" id="gallery">
+            <div data-role="header">
+                <h1>CARD.com</h1>
+            </div>
+
+            <div data-role="content">
+                <div data-role="collapsible-set" id="categories"> <!-- list card categories in collapsible sets -->
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>Recommended</h3>
+                        <div id="gallery-wrapper">
+                            <div id="gallery-scroller">
+                                <ul>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Animals</h3>
+                        <p>I'm the collapsible set content for section 2.</p>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Causes</h3>
+                        <p>I'm the collapsible set content for section 3.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="page" data-add-back-btn="true" data-back-btn-text="Card Gallery" id="card_details">
+            <div data-role="header">
+                <h1>CARD.com</h1>
+            </div>
+
+            <div data-role="content">
+                <h2 id="card_title">The {{card}} card</h2>
+                <div id="card_options">
+                    <div id="options-wrapper">
+                        <div id="options-scroller">
+                            <ul>
+                                <li><img src="img/card_template.png"></li>
+                                <li><img src="img/card_template.png"></li>
+                                <li><img src="img/card_template.png"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p id="story">{{story}}</p>
+            </div>
+        </div>
+
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript" src="lib/iscroll.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
+            /* this way we are sure that both jquery and phonegap are available before initialization */
+            $(document).ready(function() {
+                app.initialize();
+            });
         </script>
     </body>
 </html>

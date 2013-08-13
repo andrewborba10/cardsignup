@@ -2,10 +2,9 @@
 <widget id="com.card.signup" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>CardSignup</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
-    </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        A mobile application allowing someone to sign up with CARD.com after selecting a personalized debit card from a gallery    </description>
+    <author email="andrew@card.com" href="https://www.card.com">
+        Andrew Borba
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
