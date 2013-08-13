@@ -35,8 +35,18 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
-    // Update DOM on a Received Event
+
     receivedEvent: function(id) {
-        window.location="card_details.html";
+        //window.location="login.html";
     }
 };
+
+/* Initialize smooth horizontal scrollers */
+
+$('#gallery').on('pageshow', function() {
+    var galleryScroll = new IScroll('#gallery-wrapper', { scrollX: true, scrollY: false });
+});
+
+$('#card_details').on('pageshow', function() {
+    var optionsScroll = new IScroll('#options-wrapper', { scrollX: true, scrollY: false });
+});
