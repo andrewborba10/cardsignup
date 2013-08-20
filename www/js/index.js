@@ -38,15 +38,41 @@ var app = {
 
     receivedEvent: function(id) {
         //window.location="login.html";
+        //$.mobile.changePage('#card_details');
+
+        // Hide splash screen when done loading.
+        //navigator.splashscreen.hide();
     }
 };
 
-/* Initialize smooth horizontal scrollers */
+/* Attach FastClick to the buttons on the page when it's initialized. */
+$(function() {
+    FastClick.attach(document.body);
+});
 
+/* Initialize smooth horizontal scroller */
 $('#gallery').on('pageshow', function() {
     var galleryScroll = new IScroll('#gallery-wrapper', { scrollX: true, scrollY: false });
 });
 
+/* Initialize flex slider */
 $('#card_details').on('pageshow', function() {
-    var optionsScroll = new IScroll('#options-wrapper', { scrollX: true, scrollY: false });
+    // The slider being synced must be initialized first
+    $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        asNavFor: '#slider'
+    });
+
+    $('#slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel"
+    });
 });

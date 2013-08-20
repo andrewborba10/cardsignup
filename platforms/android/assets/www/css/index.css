@@ -50,6 +50,71 @@ body {
     }
 }
 
+/* Fonts */
+
+@font-face {
+font-family: "Roboto-Regular";
+src: url("../res/fonts/Roboto-Regular.ttf") format("opentype");   
+    /* Make sure you defined the correct path, which is related to
+        the location of your file `my_css.css` */ 
+}
+
+@font-face {
+font-family: "Roboto-Thin";
+src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");   
+    /* Make sure you defined the correct path, which is related to
+        the location of your file `my_css.css` */ 
+}
+
+/* Enlarge header, then fix back button line-height */
+
+.ui-header {
+    height: 65px;
+    line-height: 65px;
+}
+
+.ui-header .ui-btn-left {
+    line-height: 100%;
+    top: 100px;
+}
+
+/* class styles */
+
+.backgroundContainer {
+    position: relative;
+    padding: 20px;
+    background: #3d3d3d;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+/* intro styles */
+
+/* login styles */
+
+#login #connectFacebook {
+    margin-bottom: 100px;
+}
+
+#login #noFacebook {
+
+}
+
+#login #connectFacebookLabel {
+}
+
+#login #connectFacebookButton {
+    margin-top: 20px;
+    background: #3b5998;
+}
+
+#login #noFacebookLabel {
+}
+
+#login #noFacebookNextButton {
+    margin-top: 20px;
+}
+
 /* card_details styles */
 
 #card_options {
@@ -68,7 +133,7 @@ body {
 
 /* horizontal scroll view styles (card gallery and card options) */
 
-#gallery-wrapper, #options-wrapper {
+#gallery-wrapper {
     width: 100%;
     height: auto;
 
@@ -92,7 +157,7 @@ body {
     text-size-adjust: none;
 }
 
-#gallery-scroller, #options-scroller {
+#gallery-scroller {
     width: 2048px;
     height: 100%;
 
@@ -106,14 +171,16 @@ body {
     -o-transform: translateZ(0);
 }
 
-#gallery-scroller ul, #options-scroller ul {
+#gallery-scroller ul {
     list-style: none;
     text-align: center;
 }
 
-#gallery-scroller li, #options-scroller li {
+#gallery-scroller li {
     display: block;
     float: left;
     height: 100%;
     margin: 10px;
 }
+
+/* Option carousel */
