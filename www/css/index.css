@@ -28,17 +28,19 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    background: url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position: absolute;             /* position in the center of the screen */
+    left: 50%;
+    top: 50%;
+    height: 50px;                   /* text area height */
+    width: 225px;                   /* text area width */
+    text-align: center;
+    padding: 180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin: -115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                    /* offset horizontal: half of text area width */
 }
+
+
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
@@ -47,6 +49,34 @@ body {
         padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
         margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
+    }
+
+    #container {
+        text-align: center;
+    }
+
+    #optionCarousel {
+        width: 48%;
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    #slider {
+        max-width: 100%;
+        max-height: 100%;
+        margin-bottom: 20px;
+    }
+
+    #carousel {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #story {
+        width: 48%;
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
     }
 }
 
@@ -67,18 +97,21 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
 }
 
 /* Enlarge header, then fix back button line-height */
-
+/*
 .ui-header {
-    height: 65px;
-    line-height: 65px;
+    height: 70px;
+    line-height: 70px;
 }
 
 .ui-header .ui-btn-left {
     line-height: 100%;
-    top: 100px;
 }
-
+*/
 /* class styles */
+
+.headerLogo {
+    width: 80%;
+}
 
 .backgroundContainer {
     position: relative;
@@ -117,47 +150,69 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
 
 /* card_details styles */
 
-#card_options {
-    background-color: #444;
+#campaign {
+    margin-top: -15px;
+    text-align: center;
+    font-size: 16px;
 }
 
-#card_title {
-    text-align: center;
-    font-weight: bold;
-    color: white;
+#container {
+    padding: 10px 0;
+    border-top: 2px ridge #666;
+    border-bottom: 2px ridge #666;
+}
+
+#optionCarousel {
+}
+
+#slider {
+    margin-bottom: 20px;
+}
+
+#carousel {
 }
 
 #story {
-    color: white;
 }
 
-/* horizontal scroll view styles (card gallery and card options) */
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    #container {
+        text-align: center;
+    }
 
-#gallery-wrapper {
+    #optionCarousel {
+        width: 48%;
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    #slider {
+        max-width: 100%;
+    }
+
+    #carousel {
+        max-width: 100%;
+    }
+
+    #story {
+        width: 48%;
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+    }
+}
+
+/* horizontal scroll view styles */
+
+.gallery-wrapper {
     width: 100%;
     height: auto;
 
     overflow: hidden;
-
-    /* Prevent native touch events on Windows */
-    -ms-touch-action: none;
-
-    /* Prevent the callout on tap-hold and text selection */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    /* Prevent text resize on orientation change, useful for web-apps */
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    -o-text-size-adjust: none;
-    text-size-adjust: none;
 }
 
-#gallery-scroller {
+.gallery-scroller {
     width: 2048px;
     height: 100%;
 
@@ -171,16 +226,14 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
     -o-transform: translateZ(0);
 }
 
-#gallery-scroller ul {
+.gallery-scroller ul {
     list-style: none;
     text-align: center;
 }
 
-#gallery-scroller li {
+.gallery-scroller li {
     display: block;
     float: left;
     height: 100%;
     margin: 10px;
 }
-
-/* Option carousel */

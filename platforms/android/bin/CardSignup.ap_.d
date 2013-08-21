@@ -21,6 +21,7 @@
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/bin/res/drawable-xhdpi/ic_launcher.png \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/bin/res/drawable-xhdpi/icon.png \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www \
+/Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/categories.json \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/config.xml \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/cordova.js \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/cordova_plugins.js \
@@ -34,6 +35,7 @@
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/phonegap.js \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/plugins \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/res \
+/Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/signup.json \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/spec \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/spec.html \
 /Users/andrewborba/Development/CARD.com/cardsignup/platforms/android/assets/www/css/flexslider.css \

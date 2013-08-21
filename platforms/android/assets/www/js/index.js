@@ -39,9 +39,6 @@ var app = {
     receivedEvent: function(id) {
         //window.location="login.html";
         //$.mobile.changePage('#card_details');
-
-        // Hide splash screen when done loading.
-        //navigator.splashscreen.hide();
     }
 };
 
@@ -50,9 +47,30 @@ $(function() {
     FastClick.attach(document.body);
 });
 
-/* Initialize smooth horizontal scroller */
+/* Load content for gallery page (categories) */
+$('#gallery').on('pageinit', function() {
+    // Append the categories to the DOM in the collapsible set and tell jquery to apply the correct behavior
+    $.getJSON("categories.json", function(data) {
+        $.each(data, function(key, val) {
+            var collapsibleContent = "<div data-role=\"collapsible\" data-collapsed=\"true\" id=\"category" + val.id + "\" class=\"dynamicCategory\"><h3>" + val.name + "</h3><div id=\"gallery-wrapper" + val.id + "\" class=\"gallery-wrapper\"><div class=\"gallery-scroller\"><ul>";
+            for (var i = 0; i < 1; i++) {
+                collapsibleContent += "<li><a href=\"#card_details\" data-role=\"button\" data-transition=\"slide\"><img src=\"img/card_template.png\"></a></li>";
+            }
+            collapsibleContent += "</ul></div></div></div>";
+            $("#categories").append(collapsibleContent);
+
+            new IScroll("#gallery-wrapper" + val.id, { scrollX: true, scrollY: false });
+        });
+        $(".dynamicCategory").trigger("create"); // Apply themes and probably various other jquery stuff
+        $(".dynamicCategory").collapsible();
+    });
+    $("#categories").collapsibleset("refresh");
+});
+
+/* Instantiate static scroller */
+/* This has to be instantiated on pageshow while the dynamic content can be instantiated earlier right after it's appended to the DOM (why?) */
 $('#gallery').on('pageshow', function() {
-    var galleryScroll = new IScroll('#gallery-wrapper', { scrollX: true, scrollY: false });
+    new IScroll("#rec-gallery-wrapper", { scrollX: true, scrollY: false });
 });
 
 /* Initialize flex slider */
@@ -63,8 +81,9 @@ $('#card_details').on('pageshow', function() {
         controlNav: false,
         animationLoop: false,
         slideshow: false,
-        itemWidth: 210,
+        itemWidth: 100,
         itemMargin: 5,
+        minItems: 3,
         asNavFor: '#slider'
     });
 
@@ -76,3 +95,12 @@ $('#card_details').on('pageshow', function() {
         sync: "#carousel"
     });
 });
+
+$("#order_form").on("pageinit", function() {
+    $.getJSON("signup.json", function(data) {
+        console.log
+        $("#theform").append(data['html']);
+    });
+});
+
+
