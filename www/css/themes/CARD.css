@@ -81,13 +81,13 @@
 	font-weight: bold;
 }
 .ui-body-a .ui-link:visited {
-    color: #2489ce /*{a-body-link-visited}*/;
+    color: #ffffff /*{a-body-link-visited}*/;
 }
 .ui-body-a .ui-link:hover {
-	color: #2489ce /*{a-body-link-hover}*/;
+	color: #ffffff /*{a-body-link-hover}*/;
 }
 .ui-body-a .ui-link:active {
-	color: #2489ce /*{a-body-link-active}*/;
+	color: #ffffff /*{a-body-link-active}*/;
 }
 .ui-btn-up-a {
 	border: 1px solid #337fe1 /*{a-bup-border}*/;

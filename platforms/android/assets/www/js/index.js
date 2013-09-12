@@ -42,65 +42,137 @@ var app = {
     }
 };
 
+/* Templates ready to be given context */
+var campaign_template, story_template, order_template;
+
 /* Attach FastClick to the buttons on the page when it's initialized. */
 $(function() {
     FastClick.attach(document.body);
+
+    /* Compile templates */
+
+    /* Campaign template */
+    var campaign_source   = $("#campaign_template").html();
+    campaign_template = Handlebars.compile(campaign_source);
+
+    /* Story template */
+    var story_source   = $("#story_template").html();
+    story_template = Handlebars.compile(story_source);
+    story_template({story: "TEST"});
+
+    /* Order form template */
+    var order_source   = $("#order_template").html();
+    order_template = Handlebars.compile(order_source);
+
+    // Applying context and appending to DOM
+    $("#campaign").append(campaign_template({campaign: "The Awesome Card"}));
+    $("#order_campaign").append(order_template({campaign: "The Awesome Card"}));
+});
+
+var categoriesJson;
+var galleryJson;
+
+$("#intro").on("pageinit", function() {
+    $.getJSON("categories.json", function(categoriesData) {
+        $.getJSON("gallery.json", function(galleryData) {
+            categoriesJson = categoriesData;
+            galleryJson = galleryData;
+        });
+    });
 });
 
 /* Load content for gallery page (categories) */
 $('#gallery').on('pageinit', function() {
     // Append the categories to the DOM in the collapsible set and tell jquery to apply the correct behavior
-    $.getJSON("categories.json", function(data) {
-        $.each(data, function(key, val) {
-            var collapsibleContent = "<div data-role=\"collapsible\" data-collapsed=\"true\" id=\"category" + val.id + "\" class=\"dynamicCategory\"><h3>" + val.name + "</h3><div id=\"gallery-wrapper" + val.id + "\" class=\"gallery-wrapper\"><div class=\"gallery-scroller\"><ul>";
-            for (var i = 0; i < 1; i++) {
-                collapsibleContent += "<li><a href=\"#card_details\" data-role=\"button\" data-transition=\"slide\"><img src=\"img/card_template.png\"></a></li>";
-            }
-            collapsibleContent += "</ul></div></div></div>";
-            $("#categories").append(collapsibleContent);
+    $.each(categoriesJson, function(key, val) {
+        var collapsibleContent = "<div data-role=\"collapsible\" data-collapsed=\"true\" id=\"category" + val.id + "\" class=\"dynamicCategory\"><h3>" + val.name + "</h3><div id=\"gallery-wrapper" + val.id + "\" class=\"gallery-wrapper\"><div class=\"gallery-scroller\"><ul>";
 
-            new IScroll("#gallery-wrapper" + val.id, { scrollX: true, scrollY: false });
+        $.each(galleryJson, function(key2, val2) {
+            collapsibleContent += "<li><a href=\"#card_details\" data-role=\"button\" data-transition=\"slide\"><img src=\"" + galleryJson[0].delta[0].url + "\" class=\"gallery-card\"><p class=\"card-title\">" + val2.title + "</p></a></li>";
         });
-        $(".dynamicCategory").trigger("create"); // Apply themes and probably various other jquery stuff
-        $(".dynamicCategory").collapsible();
+
+        collapsibleContent += "</ul></div></div></div>";
+        $("#categories").append(collapsibleContent);
+
+        new IScroll("#gallery-wrapper" + val.id, { scrollX: true, scrollY: false });
     });
+    $(".dynamicCategory").trigger("create"); // Apply themes and probably various other jquery stuff
+    $(".dynamicCategory").collapsible(); // Turn the new content into collapsibles
     $("#categories").collapsibleset("refresh");
 });
 
 /* Instantiate static scroller */
-/* This has to be instantiated on pageshow while the dynamic content can be instantiated earlier right after it's appended to the DOM (why?) */
+/* This has to be instantiated on pageshow while the dt can be instantiated earlier right after it's appended to the DOM (why?) */
 $('#gallery').on('pageshow', function() {
     new IScroll("#rec-gallery-wrapper", { scrollX: true, scrollY: false });
 });
 
 /* Initialize flex slider */
-$('#card_details').on('pageshow', function() {
-    // The slider being synced must be initialized first
-    $('#carousel').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        itemWidth: 100,
-        itemMargin: 5,
-        minItems: 3,
-        asNavFor: '#slider'
+$('#card_details').on('pageinit', function() {
+    // Give context to the story template (clear the old content if there is any first)
+    $("#story").empty();
+    $("#story").append(story_template({story: galleryJson[0].description}));
+
+    var numCards = 2;
+    //var slider, carousel;
+
+    $.each(galleryJson[0].delta, function(key, val) {
+        $(".slides").append("<li><img src=\"" + val.url + "\"></li>");
     });
 
-    $('#slider').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        sync: "#carousel"
-    });
+    if (numCards > 1) {
+        $("#option-carousel").show();
+
+        // The slider being synced must be initialized first
+        $('#option-carousel').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: false,
+            slideshow: false,
+            itemWidth: 100,
+            itemMargin: 5,
+            minItems: 2,
+            maxItems: 3,
+            allowOneSlide: true,
+            asNavFor: '#option-slider'
+        });
+
+        $('#option-slider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: false,
+            slideshow: false,
+            allowOneSlide: true,
+            sync: "#option-carousel"
+        });
+    } else {
+        $("#option-carousel").hide();
+        $('#option-slider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: false,
+            slideshow: false,
+            allowOneSlide: true
+        });
+    }
+
+    /*
+
+            start: function(slider) {
+                $.each(galleryJson[0].delta, function(key, val) {
+                    $("#option-slider .slides").append("<li><img src=\"" + val.url + "\"></li>");
+                    slider.addSlide("<li><img src=\"" + val.url + "\"></li>", slider.count);
+                });
+                $(".hack-remove-me").remove();
+            }
+            */
 });
 
 $("#order_form").on("pageinit", function() {
-    $.getJSON("signup.json", function(data) {
-        console.log
-        $("#theform").append(data['html']);
+    $('#edit-dob').mobiscroll().date({
+        theme: 'android-ics',
+        display: 'bottom',
+        mode: 'scroller',
+        dateOrder: 'mmddyy'
     });
 });
-
-

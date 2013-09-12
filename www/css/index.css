@@ -50,34 +50,6 @@ body {
         margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
     }
-
-    #container {
-        text-align: center;
-    }
-
-    #optionCarousel {
-        width: 48%;
-        display: inline-block;
-        margin-right: 20px;
-    }
-
-    #slider {
-        max-width: 100%;
-        max-height: 100%;
-        margin-bottom: 20px;
-    }
-
-    #carousel {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    #story {
-        width: 48%;
-        display: inline-block;
-        vertical-align: top;
-        text-align: left;
-    }
 }
 
 /* Fonts */
@@ -107,18 +79,15 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
     line-height: 100%;
 }
 */
-/* class styles */
+/* global class styles */
 
-.headerLogo {
-    width: 80%;
-}
-
-.backgroundContainer {
+.content-container {
     position: relative;
     padding: 20px;
     background: #3d3d3d;
-    -webkit-border-radius: 0.3em;
-    border-radius: 0.3em;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 4px ridge #666;
 }
 
 /* intro styles */
@@ -148,59 +117,126 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
     margin-top: 20px;
 }
 
+/* gallery styles */
+
+#gallery .gallery-card {
+    border: 3px ridge #666;
+    width: 250px;
+    height: auto;
+}
+
+#gallery .card-title {
+    margin: 3px;
+}
+
 /* card_details styles */
 
-#campaign {
+#card_details #details-campaign-header {
     margin-top: -15px;
     text-align: center;
     font-size: 16px;
+    color: #fff;
+    text-shadow: -2px -2px 1px #222;
 }
 
-#container {
+#card_details .horizontal-borders {
     padding: 10px 0;
     border-top: 2px ridge #666;
     border-bottom: 2px ridge #666;
 }
 
-#optionCarousel {
+#card_details #option-slider-carousel {
+    margin-right: 20px;
 }
 
-#slider {
-    margin-bottom: 20px;
+#card_details #option-slider {
+    width: 300px;
 }
 
-#carousel {
+#card_details #option-slider ul.slides img {
+    height: 195px;
+    width: auto;
 }
 
-#story {
+#card_details #option-carousel {
+    width: 300px;
+}
+
+#card_details #story {
+    position: static;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    overflow-y: scroll;
 }
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    #container {
-        text-align: center;
+
+    #card_details #container {
     }
 
-    #optionCarousel {
-        width: 48%;
+    #card_details #option-slider-carousel {
         display: inline-block;
-        margin-right: 20px;
     }
 
-    #slider {
-        max-width: 100%;
+    #card_details #slider {
     }
 
-    #carousel {
-        max-width: 100%;
+    #card_details #option-carousel {
     }
 
-    #story {
-        width: 48%;
-        display: inline-block;
-        vertical-align: top;
-        text-align: left;
+    #card_details #story {
+        position: absolute;
+        right: 20px;
+        left: 340px;
     }
+}
+
+/* order form styles */
+
+#order_form #card-container {
+    position: relative;
+    padding: 10px;
+    background: #3d3d3d;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 4px ridge #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#order_form #card-container p {
+    margin: 0;
+    font-size: 24px;
+    color: #ddd;
+    text-shadow: -1px -1px 1px #000;
+}
+
+#order_form #card-container img {
+    display: inline-block;
+    border: 4px inset white;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#order_form .form-section-header {
+    padding: 2px;
+    border-bottom: 2px ridge #666;
+    color: #ddd;
+    text-shadow: -1px -1px 1px #000;
+}
+
+#order_form .form-section-label {
+    position: relative;
+    top: 0.5em;
+    color: #999;
+    text-shadow: -1px -1px 1px #000;
+}
+
+#order_form .form-section-text {
+    color: #999;
+    text-shadow: -1px -1px 1px #000;
 }
 
 /* horizontal scroll view styles */

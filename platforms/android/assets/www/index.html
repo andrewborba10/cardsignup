@@ -18,204 +18,235 @@
     under the License.
 -->
 <html>
-    <head>
-        <title>Introduction</title>
+<head>
+    <title>Introduction</title>
 
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-        
-        <link rel="stylesheet" href="css/index.css" />
-        <link rel="stylesheet" href="css/themes/CARD.css" />
-        <link rel="stylesheet" href="css/flexslider.css" />
-        <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
-    </head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 
-    <body>
-        <div data-role="page" data-theme="a" id="intro">
-            <div data-role="header">
-                <h1><img class="headerLogo" src="img/cardcom.png"></h1>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/themes/CARD.css" />
+    <link rel="stylesheet" href="css/flexslider.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
+
+    <link href="css/mobiscroll.core.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll.android-ics.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div data-role="page" data-theme="a" id="intro">
+        <div data-role="header">
+            <h1><img class="headerLogo" src="img/cardcom.png"></h1>
+        </div>
+
+        <div data-role="content">
+            <div class="content-container">
+                <p>A nice introduction to CARD.com.  Maybe an embedded video?</p>
+                <a href="#gallery" data-role="button" data-theme="b" data-transition="slide" id="introNextButton">Let's get started!</a>
             </div>
+        </div>
+    </div>
 
-            <div data-role="content">
-                <div class="backgroundContainer">
-                    <p>A nice introduction to CARD.com.  Maybe an embedded video?</p>
-                    <a href="#login" data-role="button" data-theme="b" data-transition="slide" id="introNextButton">Let's get started!</a>
+    <div data-role="page" data-theme="a" id="login">
+        <div data-role="header">
+            <h1><img class="headerLogo" src="img/cardcom.png"></h1>
+        </div>
+
+        <div data-role="content" data-theme="a">
+            <div class="content-container">
+                <div id="connectFacebook">
+                    <p id="connectFacebookLabel">Please allow us to help you choose a card that best suits you by connecting to Facebook.</p>
+                    <a href="#gallery" data-role="button" data-transition="slide" id="connectFacebookButton">Connect to Facebook</a>
+                </div>
+
+                <div id="noFacebook">
+                    <p id="noFacebookLabel">Or instead you can skip facebook and get straight to browsing through our extensive gallery of cards.</p>
+                    <a href="#gallery" data-role="button" data-theme="b" data-transition="slide" id="noFacebookNextButton">Take me to the cards!</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div data-role="page" data-theme="a" id="login">
-            <div data-role="header">
-                <h1><img class="headerLogo" src="img/cardcom.png"></h1>
-            </div>
-
-            <div data-role="content" data-theme="a">
-                <div class="backgroundContainer">
-                    <div id="connectFacebook">
-                        <p id="connectFacebookLabel">Please allow us to help you choose a card that best suits you by connecting to Facebook.</p>
-                        <a href="#gallery" data-role="button" data-transition="slide" id="connectFacebookButton">Connect to Facebook</a>
-                    </div>
-
-                    <div id="noFacebook">
-                        <p id="noFacebookLabel">Or instead you can skip facebook and get straight to browsing through our extensive gallery of cards.</p>
-                        <a href="#gallery" data-role="button" data-theme="b" data-transition="slide" id="noFacebookNextButton">Take me to the cards!</a>
-                    </div>
-                </div>
-            </div>
+    <div data-role="page" data-theme="a" id="gallery">
+        <div data-role="header">
+            <h1><img class="headerLogo" src="img/cardcom.png"></h1>
         </div>
 
-        <div data-role="page" data-theme="a" id="gallery">
-            <div data-role="header">
-                <h1><img class="headerLogo" src="img/cardcom.png"></h1>
-            </div>
-
-            <div data-role="content">
-                <div class="backgroundContainer">
-                    <div data-role="collapsible-set" data-iconpos="right" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-theme="c" id="categories"> <!-- list card categories in collapsible sets -->
-                        <div data-role="collapsible" data-collapsed="false">
-                            <h3>Recommended</h3>
-                            <div id="rec-gallery-wrapper" class="gallery-wrapper">
-                                <div class="gallery-scroller">
-                                    <ul>
-                                        <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
-                                        <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
-                                        <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
-                                        <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
-                                        <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
-                                        <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div data-role="page" data-theme="a" data-add-back-btn="true" data-back-btn-text="Gallery" id="card_details">
-            <div data-role="header">
-                <h1><img class="headerLogo" src="img/cardcom.png"></h1>
-            </div>
-
-            <div data-role="content">
-                <div class="backgroundContainer">
-                    <h1 id="campaign">The {{campaign}} Card</h1>
-                    <div id="container">
-                        <div id="optionCarousel">
-                            <div id="slider" class="flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_lemon.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_donut.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_caramel.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_lemon.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_donut.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_caramel.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_lemon.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_donut.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_caramel.jpg" />
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="carousel" class="flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_lemon.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_donut.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_caramel.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_lemon.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_donut.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_caramel.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_lemon.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_donut.jpg" />
-                                    </li>
-                                    <li>
-                                        <img src="images/kitchen_adventurer_caramel.jpg" />
-                                    </li>
+        <div data-role="content">
+            <div class="content-container">
+                <div data-role="collapsible-set" data-iconpos="right" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-theme="c" id="categories"> <!-- list card categories in collapsible sets -->
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>Recommended</h3>
+                        <div id="rec-gallery-wrapper" class="gallery-wrapper">
+                            <div class="gallery-scroller">
+                                <ul>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
+                                    <li><a href="#card_details" data-role="button" data-transition="slide"><img src="img/card_template.png"></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div id="story">
-                            <p>{{story}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" data-theme="a" data-add-back-btn="true" data-back-btn-text="Gallery" id="card_details">
+        <div data-role="header">
+            <h1><img class="headerLogo" src="img/cardcom.png"></h1>
+        </div>
+
+        <div data-role="content">
+            <div class="content-container">
+                <script id="campaign_template" type="text/x-handlebars-template">
+                    <h1 id="campaign_header">{{campaign}}</h1>
+                </script>
+                <div id="campaign">
+                </div>
+                <div class="horizontal-borders">
+                    <div id="option-slider-carousel">
+                        <div id="option-slider" class="flexslider">
+                            <ul class="slides">
+                            </ul>
+                        </div>
+                        <div id="option-carousel" class="flexslider">
+                            <ul class="slides">
+                            </ul>
                         </div>
                     </div>
-                    <a href="#order_form" data-role="button" data-theme="b" data-transition="slide" id="orderFormButton">Order Form</a>
+                    <script id="story_template" type="text/x-handlebars-template">
+                        <p>{{story}}</p>
+                    </script>
+                    <div id="story">
+                    </div>
                 </div>
+                <a href="#order_form" data-role="button" data-theme="b" data-transition="slide" id="orderFormButton">Order Form</a>
             </div>
         </div>
+    </div>
 
-        <div data-role="page" data-theme="a" data-add-back-btn="true" data-back-btn-text="Campaign" id="order_form">
-            <div data-role="header">
-                <h1><img class="headerLogo" src="img/cardcom.png"></h1>
-            </div>
-
-            <div data-role="content">
-                <div id="theform">
-                </div>
-            </div>
+    <div data-role="page" data-theme="a" data-add-back-btn="true" data-back-btn-text="Campaign" id="order_form">
+        <div data-role="header">
+            <h1><img class="headerLogo" src="img/cardcom.png"></h1>
         </div>
 
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="lib/jquery.mobile-1.3.2.min.js"></script>
-        <script type="text/javascript" src="lib/fastclick.js"></script>
-        <script type="text/javascript" src="lib/iscroll.js"></script>
-        <script type="text/javascript" src="lib/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            /* this way we are sure that both jquery and phonegap are available before initialization */
-            $(document).ready(function() {
-                app.initialize();
-            });
-        </script>
-    </body>
+        <div data-role="content">
+            <div id="card-container">
+                <script id="order_template" type="text/x-handlebars-template">
+                    <h1 id="campaign_header">{{campaign}}</h1>
+                </script>
+                <div id="order_campaign">
+                </div>
+                <img src="img/card_template.png">
+            </div>
+
+            <div class="content-container">
+                <form action="/api/signup" method="post" accept-charset="UTF-8"><div>
+                    <fieldset class="form-wrapper" id="edit-contact-information">
+                        <p class="form-section-header">Contact Information</p>
+                        <div class="fieldset-wrapper">
+                            <div data-role="fieldcontain" class="form-item form-type-textfield form-item-first-name">
+                                <label class="form-section-label" for="edit-first-name">First Name <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-first-name" name="first_name" value="" size="60" maxlength="20" class="form-text required">
+                            </div>
+                            <div data-role="fieldcontain" class="form-item form-type-textfield form-item-last-name">
+                                <label class="form-section-label" for="edit-first-name">Last Name <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-last-name" name="last_name" value="" size="60" maxlength="20" class="form-text required">
+                            </div>
+                            <div data-role="fieldcontain" class="form-item form-type-textfield form-item-email">
+                                <label class="form-section-label" for="edit-email">Email <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-email" name="email" value="" size="60" maxlength="128" class="form-text required">
+                            </div>  
+                            <div data-role="fieldcontain" class="form-item form-type-phonenumber form-item-card-phone">
+                                <label class="form-section-label" for="edit-card-phone">Phone <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-card-phone" name="card_phone" value="" size="10" maxlength="10" class="form-text required">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-wrapper" id="edit-mailing-information">
+                        <p class="form-section-header">Mailing Address</p>
+                        <div class="fieldset-wrapper">
+                            <div data-role="fieldcontain" class="form-item form-type-textfield form-item-card-address">
+                                <label class="form-section-label" for="edit-card-address">Address <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-card-address" name="card_address" value="" size="60" maxlength="30" class="form-text required">
+                            </div>
+                            <div data-role="fieldcontain" class="form-item form-type-textfield form-item-card-address2">
+                                <label class="form-section-label" for="edit-card-address2">Address 2 </label>
+                                <input data-theme="b" type="text" id="edit-card-address2" name="card_address2" value="" size="60" maxlength="30" class="form-text">
+                            </div>
+                            <div data-role="fieldcontain" class="form-item form-type-textfield form-item-card-zipcode">
+                                <label class="form-section-label" for="edit-card-zipcode">Zipcode <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-card-zipcode" name="card_zipcode" value="" size="60" maxlength="5" class="form-text required">
+                            </div>
+                            <div data-role="fieldcontain" class="form-item form-type-textfield form-item-card-city">
+                                <label class="form-section-label" for="edit-card-city">City <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-card-city" name="card_city" value="" size="60" maxlength="32" class="form-text required">
+                            </div>
+                            <div data-role="fieldcontain" class="form-item form-type-select form-item-card-state">
+                                <label class="form-section-label" for="edit-card-state">State <span class="form-required" title="This field is required.">*</span></label>
+                                <select id="edit-card-state" name="card_state" class="form-select required">
+                                    <option value="" selected="selected">- Select -</option><option value="AL">AL</option><option value="AK">AK</option><option value="AS">AS</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FM">FM</option><option value="FL">FL</option><option value="GA">GA</option><option value="GU">GU</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MH">MH</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="MP">MP</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PW">PW</option><option value="PA">PA</option><option value="PR">PR</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VI">VI</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-wrapper" id="edit-security-information">
+                        <p class="form-section-header">Security Information</p>
+                        <div class="fieldset-wrapper">
+                            <div data-role="fieldcontain" class="form-item form-type-date form-item-dob">
+                                <label class="form-section-label" for="edit-dob">Birthday <span class="form-required" title="This field is required.">*</span></label>
+                                <input placeholder="Touch to set" id="edit-dob" name="dob" class="form-date" />
+                            </div>
+                            <div data-role="fieldcontain" class="form-item form-type-docid form-item-social">
+                                <label class="form-section-label" for="edit-social">Social Security <span class="form-required" title="This field is required.">*</span></label>
+                                <input data-theme="b" type="text" id="edit-social" name="social" value="" size="3" maxlength="9" class="form-text required">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-wrapper" id="terms-privacy-information">
+                        <p class="form-section-header">Terms and Privacy</p>
+                        <div class="fieldset-wrapper">
+                            <div class="form-item form-type-checkbox form-item-terms">
+                                <label class="form-section-text">Please take a moment to read our <a href="https://www.card.com/terms-and-conditions">Cardholder Agreement</a> and <a href="https://www.card.com/privacy-policy">Privacy Policy</a>.</label>
+                                <input type="checkbox" id="edit-terms" name="terms" value="1" class="form-checkbox">
+                                <label class="option" for="edit-terms">I have read and agree to the Cardholder Agreement and Privacy Policy.</label>
+                            </div>
+                        </div>
+                    <fieldset class="form-wrapper" id="terms-privacy-information">
+                        <p class="form-section-header">Confirmation</p>
+                        <div class="fieldset-wrapper">
+                            <div class="form-actions form-wrapper" id="edit-buttons">
+                                <input data-theme="b" data-theme="b" type="submit" id="edit-return" name="op" value="Submit Order" class="form-submit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="lib/jquery.mobile-1.3.2.min.js"></script>
+    <script type="text/javascript" src="lib/mobiscroll.core.js"></script>
+    <script type="text/javascript" src="lib/mobiscroll.datetime.js"></script>
+    <script type="text/javascript" src="lib/mobiscroll.android-ics.js"></script>
+    <script type="text/javascript" src="lib/fastclick.js"></script>
+    <script type="text/javascript" src="lib/handlebars.js"></script>
+    <script type="text/javascript" src="lib/iscroll.js"></script>
+    <script type="text/javascript" src="lib/jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+        /* this way we are sure that both jquery and phonegap are available before initialization */
+        $(document).ready(function() {
+            app.initialize();
+        });
+    </script>
+</body>
 </html>
