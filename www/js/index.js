@@ -45,6 +45,9 @@ var app = {
 /* Templates ready to be given context */
 var campaign_template, story_template, order_template;
 
+/* Category, selected campaign, and selected image global variables */
+var selectedCategory, selectedCampaign, selectedImage;
+
 /* Attach FastClick to the buttons on the page when it's initialized. */
 $(function() {
     FastClick.attach(document.body);
@@ -65,32 +68,50 @@ $(function() {
 });
 
 var categoriesJson;
-var galleryJson;
+var galleryJson = {};
 
 $("#intro").on("pageinit", function() {
-    $.getJSON("categories.json", function(categoriesData) {
-        $.getJSON("gallery.json", function(galleryData) {
-            categoriesJson = categoriesData;
-            galleryJson = galleryData;
+    console.log("loading all json...");
+    $.getJSON("http://www.card.com/api/gallery/categories?callback=?", {format: "json" })
+    .done(function(categoriesData) {
+        console.log("done loading categories");
+        categoriesJson = categoriesData;
+        $.each(categoriesData, function(key, val) {
+            $.getJSON("https://www.card.com/api/gallery?category=" + key + "&callback=?", {format: "json" })
+            .done(function(galleryCategoryData) {
+                console.log("loaded category gallery for cid " + key);
+                galleryJson[key] = galleryCategoryData;
+            });
         });
     });
 });
 
 /* Load content for gallery page (categories) */
 $('#gallery').on('pageinit', function() {
+    var cardButtonInfo = {};
+
     // Append the categories to the DOM in the collapsible set and tell jquery to apply the correct behavior
     $.each(categoriesJson, function(key, val) {
-        var collapsibleContent = "<div data-role=\"collapsible\" data-collapsed=\"true\" id=\"category" + val.id + "\" class=\"dynamicCategory\"><h3>" + val.name + "</h3><div id=\"gallery-wrapper" + val.id + "\" class=\"gallery-wrapper\"><div class=\"gallery-scroller\"><ul>";
+        var collapsibleContent = "<div data-role=\"collapsible\" data-collapsed=\"true\" id=\"category" + key + "\" class=\"dynamicCategory\"><h3>" + val.name + "</h3><div id=\"gallery-wrapper" + key + "\" class=\"gallery-wrapper\"><div class=\"gallery-scroller\"><ul>";
 
-        $.each(galleryJson, function(key2, val2) {
-            collapsibleContent += "<li><a href=\"#card_details\" data-role=\"button\" data-transition=\"slide\"><img src=\"" + galleryJson[0].delta[0].url + "\" class=\"gallery-card\"><p class=\"card-title\">" + val2.title + "</p></a></li>";
+        $.each(galleryJson[key], function(key2, val2) {
+            collapsibleContent += "<li><a href=\"#card_details\" data-role=\"button\" data-transition=\"slide\" id=\"cardButton" + key2 + "\" class=\"cardButton\"><img src=\"" + val2.images[0].uri + "\" class=\"gallery-card\"><p class=\"card-title\">" + val2.title + "</p></a></li>";
+            cardButtonInfo["cardButton" + key2] = {"cid": key, "nid": key2};
         });
 
         collapsibleContent += "</ul></div></div></div>";
         $("#categories").append(collapsibleContent);
 
-        new IScroll("#gallery-wrapper" + val.id, { scrollX: true, scrollY: false });
+        //new IScroll("#gallery-wrapper" + key, { scrollX: true, scrollY: false });
     });
+
+    /* Listen for when a card is tapped so the card and category can be stored. */
+    $(".cardButton").tap(function() {
+        var buttonId = $(this).attr("id");
+        selectedCategory = cardButtonInfo[buttonId].cid;
+        selectedCampaign = cardButtonInfo[buttonId].nid;
+    });
+
     $(".dynamicCategory").trigger("create"); // Apply themes and probably various other jquery stuff
     $(".dynamicCategory").collapsible(); // Turn the new content into collapsibles
     $("#categories").collapsibleset("refresh");
@@ -99,25 +120,28 @@ $('#gallery').on('pageinit', function() {
 /* Instantiate static scroller */
 /* This has to be instantiated on pageshow while the dt can be instantiated earlier right after it's appended to the DOM (why?) */
 $('#gallery').on('pageshow', function() {
-    new IScroll("#rec-gallery-wrapper", { scrollX: true, scrollY: false });
+    //new IScroll("#rec-gallery-wrapper", { scrollX: true, scrollY: false });
 });
 
-/* Initialize flex slider */
-$('#card_details').on('pageinit', function() {
+/* Give context to the templates and initialize flex slider */
+$('#card_details').on('pagebeforeshow', function() {
     // Give context to the campaign and story templates (clear the old content if there is any first)
     $("#details-campaign").empty();
-    $("#details-campaign").append(campaign_template({campaign: galleryJson[0].title}));
+    $("#details-campaign").append(campaign_template({campaign: galleryJson[selectedCategory][selectedCampaign].title}));
 
     $("#story").empty();
-    $("#story").append(story_template({story: galleryJson[0].description}));
+    $("#story").append(story_template({story: galleryJson[selectedCategory][selectedCampaign].description}));
 
-    var numCards = 2;
-    //var slider, carousel;
+    /* Get the number of images that exist for this campaign */
+    var numCards = galleryJson[selectedCategory][selectedCampaign].images.length;
 
-    $.each(galleryJson[0].delta, function(key, val) {
-        $(".slides").append("<li><img src=\"" + val.url + "\"></li>");
+    /* Append all card images to the DOM */
+    $(".slides").empty();
+    $.each(galleryJson[selectedCategory][selectedCampaign].images, function(key, val) {
+        $(".slides").append("<li><img src=\"" + val.uri + "\"></li>");
     });
 
+    /* Create a multi-image card carousel */
     if (numCards > 1) {
         $("#option-carousel").show();
 
@@ -155,7 +179,6 @@ $('#card_details').on('pageinit', function() {
     }
 
     /*
-
             start: function(slider) {
                 $.each(galleryJson[0].delta, function(key, val) {
                     $("#option-slider .slides").append("<li><img src=\"" + val.url + "\"></li>");
@@ -166,11 +189,13 @@ $('#card_details').on('pageinit', function() {
             */
 });
 
-$("#order_form").on("pageinit", function() {
+$("#order_form").on("pagebeforeshow", function() {
     // Give context to the campaign template (clear the old content if there is any first)
     $("#order-campaign").empty();
-    $("#order-campaign").append(order_template({campaign: galleryJson[0].title}));
+    $("#order-campaign").append(order_template({campaign: galleryJson[selectedCategory][selectedCampaign].title}));
+});
 
+$("#order_form").on("pageinit", function() {
     $('#edit-dob').mobiscroll().date({
         theme: 'android-ics',
         display: 'bottom',
@@ -178,3 +203,8 @@ $("#order_form").on("pageinit", function() {
         dateOrder: 'mmddyy'
     });
 });
+
+/* Called when user clicks "submit" to order a new card */
+function submitForm() {
+    console.log("submit");
+}

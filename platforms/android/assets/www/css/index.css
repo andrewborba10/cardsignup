@@ -79,6 +79,12 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
     line-height: 100%;
 }
 */
+
+/* Expand the margin on the header */
+.ui-title {
+    margin: 0.6em 10% 0.8em !important;
+}
+
 /* global class styles */
 
 .content-container {
@@ -131,7 +137,7 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
 
 /* card_details styles */
 
-#card_details #campaign_header {
+#card_details #details-campaign-header {
     margin-top: -15px;
     text-align: center;
     font-size: 16px;
@@ -163,11 +169,11 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
 }
 
 #card_details #story {
-    border: 5px solid black;
     position: static;
     display: inline-block;
     vertical-align: top;
     text-align: left;
+    overflow-y: scroll;
 }
 
 /* Landscape layout (with min-width) */
@@ -197,13 +203,20 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
 
 #order_form #card-container {
     position: relative;
-    padding: 20px;
+    padding: 10px;
     background: #3d3d3d;
     -webkit-border-radius: 10px;
     border-radius: 10px;
     border: 4px ridge #666;
     text-align: center;
     margin-bottom: 20px;
+}
+
+#order_form #card-container p {
+    margin: 0;
+    font-size: 24px;
+    color: #ddd;
+    text-shadow: -1px -1px 1px #000;
 }
 
 #order_form #card-container img {
@@ -242,8 +255,9 @@ src: url("../res/fonts/Roboto-Thin.ttf") format("opentype");
 }
 
 .gallery-scroller {
-    width: 2048px;
+    width: auto;
     height: 100%;
+    overflow: auto;
 
     /* Prevent elements to be highlighted on tap */
     -webkit-tap-highlight-color: rgba(0,0,0,0);

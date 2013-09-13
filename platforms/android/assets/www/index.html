@@ -104,10 +104,10 @@
 
         <div data-role="content">
             <div class="content-container">
-                <script id="campaign_template" type="text/x-handlebars-template">
-                    <h1 id="campaign_header">{{campaign}}</h1>
+                <script id="campaign-template" type="text/x-handlebars-template">
+                    <p id="details-campaign-header">{{campaign}}</p>
                 </script>
-                <div id="campaign">
+                <div id="details-campaign">
                 </div>
                 <div class="horizontal-borders">
                     <div id="option-slider-carousel">
@@ -120,7 +120,7 @@
                             </ul>
                         </div>
                     </div>
-                    <script id="story_template" type="text/x-handlebars-template">
+                    <script id="story-template" type="text/x-handlebars-template">
                         <p>{{story}}</p>
                     </script>
                     <div id="story">
@@ -138,10 +138,10 @@
 
         <div data-role="content">
             <div id="card-container">
-                <script id="order_template" type="text/x-handlebars-template">
-                    <h1 id="campaign_header">{{campaign}}</h1>
+                <script id="order-template" type="text/x-handlebars-template">
+                    <p>{{campaign}}</p>
                 </script>
-                <div id="order_campaign">
+                <div id="order-campaign">
                 </div>
                 <img src="img/card_template.png">
             </div>
@@ -233,7 +233,6 @@
 
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="lib/jquery.mobile-1.3.2.min.js"></script>
     <script type="text/javascript" src="lib/mobiscroll.core.js"></script>
     <script type="text/javascript" src="lib/mobiscroll.datetime.js"></script>
@@ -242,6 +241,7 @@
     <script type="text/javascript" src="lib/handlebars.js"></script>
     <script type="text/javascript" src="lib/iscroll.js"></script>
     <script type="text/javascript" src="lib/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         /* this way we are sure that both jquery and phonegap are available before initialization */
         $(document).ready(function() {
